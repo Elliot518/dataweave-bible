@@ -42,6 +42,8 @@ payload.message
 <summary>Output</summary>
 
 ```json
- 
+ "Hello world!"
 ```
 </details>
+
+
