@@ -7,23 +7,58 @@
 
 **Xml**
 
-- [Retrieve Element](#retrieveElement)
-- [Index Selector](#indexSelector)
+- [Map Array Elements](#mapArrayElements)
 
 &nbsp;
 
-### retrieveElement
+### mapArrayElements
+>Map each elements in an array.
 
-<a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=MuleSoft/xml%2FretrieveElement"><img width="300" src="/images/dwplayground-button.png"><a>
+<a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=map%2FmapArrayElements?202307111200"><img width="300" src="/images/dwplayground-button.png"><a>
 
 <details>
 <summary>Input</summary>
 
 ```json
-<language>
-    <name>DataWeave</name>
-    <version>2.0</version>
-</language>
+{
+    "books": [
+      {
+        "-category": "cooking",
+        "title":"Everyday Italian",
+        "author": "Giada De Laurentiis",
+        "year": "2005",
+        "price": "30.00"
+      },
+      {
+        "-category": "children",
+        "title": "Harry Potter",
+        "author": "J K. Rowling",
+        "year": "2005",
+        "price": "29.99"
+      },
+      {
+        "-category": "web",
+        "title":  "XQuery Kick Start",
+        "author": [
+          "James McGovern",
+          "Per Bothner",
+          "Kurt Cagle",
+          "James Linn",
+          "Vaidyanathan Nagarajan"
+        ],
+        "year": "2003",
+        "price": "49.99"
+      },
+      {
+        "-category": "web",
+        "-cover": "paperback",
+        "title": "Learning XML",
+        "author": "Erik T. Ray",
+        "year": "2003",
+        "price": "39.95"
+      }
+    ]
+}
 ```
 </details>
 
@@ -32,53 +67,12 @@
 
 ```dataweave
 %dw 2.0
-output application/xml
+output application/json
 ---
-{ newname : payload.language.name }
-```
-</details>
-
-<details>
-<summary>Output</summary>
-
-```json
-<?xml version='1.0' encoding='UTF-8'?>
-<newname>DataWeave</newname>
-```
-</details>
-
-<hr>
-
-### indexSelector
->If multiple child elements of the input have the same name, use the index to select the value of the child.
-
-<a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=MuleSoft/xml%2FindexSelector?202307111200"><img width="300" src="/images/dwplayground-button.png"><a>
-
-<details>
-<summary>Input</summary>
-
-```json
-<root>
-    <element>
-        <subelement1>SE1</subelement1>
-    </element>
-    <element>E2</element>
-</root>
-```
-</details>
-
-<details>
-<summary>Script</summary>
-
-```dataweave
-%dw 2.0
-output application/xml
----
-{ 
-    newRoot: {
-        mysubelement : payload.root[0].subelement1,
-        mysubelement2 : payload.root[1]
-    }
+items: payload.books map (item, index) -> {
+      book: item mapObject (value, key) -> {
+      (upper(key)): value
+      }
 }
 ```
 </details>
@@ -87,10 +81,53 @@ output application/xml
 <summary>Output</summary>
 
 ```json
-<?xml version='1.0' encoding='UTF-8'?>
-<newRoot>
-  <mysubelement>SE1</mysubelement>
-  <mysubelement2>E2</mysubelement2>
-</newRoot>
+{
+  "items": [
+    {
+      "book": {
+        "-CATEGORY": "cooking",
+        "TITLE": "Everyday Italian",
+        "AUTHOR": "Giada De Laurentiis",
+        "YEAR": "2005",
+        "PRICE": "30.00"
+      }
+    },
+    {
+      "book": {
+        "-CATEGORY": "children",
+        "TITLE": "Harry Potter",
+        "AUTHOR": "J K. Rowling",
+        "YEAR": "2005",
+        "PRICE": "29.99"
+      }
+    },
+    {
+      "book": {
+        "-CATEGORY": "web",
+        "TITLE": "XQuery Kick Start",
+        "AUTHOR": [
+          "James McGovern",
+          "Per Bothner",
+          "Kurt Cagle",
+          "James Linn",
+          "Vaidyanathan Nagarajan"
+        ],
+        "YEAR": "2003",
+        "PRICE": "49.99"
+      }
+    },
+    {
+      "book": {
+        "-CATEGORY": "web",
+        "-COVER": "paperback",
+        "TITLE": "Learning XML",
+        "AUTHOR": "Erik T. Ray",
+        "YEAR": "2003",
+        "PRICE": "39.95"
+      }
+    }
+  ]
+}
 ```
 </details>
+
