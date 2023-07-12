@@ -46,4 +46,46 @@ payload.message
 ```
 </details>
 
+<hr>
 
+### Extract Data
+
+xxx
+
+
+<a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=basic%2FextractData"><img width="300" src="/images/dwplayground-button.png"><a>
+
+<details>
+<summary>Input</summary>
+
+```json
+
+```
+</details>
+
+<details>
+<summary>Script</summary>
+
+```dataweave
+%dw 2.0
+var myObject = { "myKey" : "1234", "name" : "somebody" }
+var myArray = [ { "myKey" : "1234" }, { "name" : "somebody" } ]
+output application/json
+---
+{
+    selectingValueUsingKeyInObject : myObject.name,
+    selectingValueUsingKeyOfObjectInArray : myArray.name,
+}
+```
+</details>
+
+<details>
+<summary>Output</summary>
+
+```json
+{
+    "selectingValueUsingKeyInObject": "somebody",
+    "selectingValueUsingKeyOfObjectInArray": [ "somebody" ]
+}
+```
+</details>
