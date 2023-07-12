@@ -7,6 +7,7 @@ MuleSoft DataWeave bible
 
 **Basic**
 - [HelloWorld](#HelloWorld)
+- [Extract Data](#ExtractData)
 
 &nbsp;
 
@@ -48,7 +49,7 @@ payload.message
 
 <hr>
 
-### Extract Data
+### ExtractData
 
 xxx
 
