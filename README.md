@@ -6,17 +6,23 @@ MuleSoft DataWeave bible
 ## Table of Contents
 
 **Basic**
-- [HelloWorld](#HelloWorld)
-- [Extract Data](#ExtractData)
+- [HelloWorld](#helloWorld)
+- [Extract Data](#extractData)
 
 &nbsp;
 
-### HelloWorld
+**Xml**
+
+- [Retrieve Element](#retrieveElement)
+
+&nbsp;
+
+### helloWorld
 
 Hello World of DataWeave
 
 
-<a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=basic%2FHelloWorld"><img width="300" src="/images/dwplayground-button.png"><a>
+<a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=basic%2FhelloWorld"><img width="300" src="/images/dwplayground-button.png"><a>
 
 <details>
 <summary>Input</summary>
@@ -49,7 +55,7 @@ payload.message
 
 <hr>
 
-### ExtractData
+### extractData
 
 xxx
 
@@ -90,3 +96,42 @@ output application/json
 }
 ```
 </details>
+
+&nbsp;
+
+### retrieveElement
+
+<a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=xml%2FretrieveElement"><img width="300" src="/images/dwplayground-button.png"><a>
+
+<details>
+<summary>Input</summary>
+
+```json
+<language>
+    <name>DataWeave</name>
+    <version>2.0</version>
+</language>
+```
+</details>
+
+<details>
+<summary>Script</summary>
+
+```dataweave
+%dw 2.0
+output application/xml
+---
+{ newname : payload.language.name }
+```
+</details>
+
+<details>
+<summary>Output</summary>
+
+```json
+<?xml version='1.0' encoding='UTF-8'?>
+<newname>DataWeave</newname>
+```
+</details>
+
+<hr>
