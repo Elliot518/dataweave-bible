@@ -137,6 +137,7 @@ output application/xml
 <hr>
 
 ### indexSelector
+>If multiple child elements of the input have the same name, use the index to select the value of the child.
 
 <a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=xml%2FindexSelector?202307111200"><img width="300" src="/images/dwplayground-button.png"><a>
 
