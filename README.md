@@ -160,7 +160,12 @@ output application/xml
 %dw 2.0
 output application/xml
 ---
-{ mysubelement : payload.root[0].subelement1 }
+{ 
+    newRoot: {
+        mysubelement : payload.root[0].subelement1,
+        mysubelement2 : payload.root[1]
+    }
+}
 ```
 </details>
 
@@ -169,6 +174,9 @@ output application/xml
 
 ```json
 <?xml version='1.0' encoding='UTF-8'?>
-<mysubelement>SE1</mysubelement>
+<newRoot>
+  <mysubelement>SE1</mysubelement>
+  <mysubelement2>E2</mysubelement2>
+</newRoot>
 ```
 </details>
