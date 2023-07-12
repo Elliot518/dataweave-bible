@@ -15,7 +15,7 @@
 Hello World of DataWeave
 
 
-<a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=basic%2FhelloWorld"><img width="300" src="/images/dwplayground-button.png"><a>
+<a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=MuleSoft/basic%2FhelloWorld"><img width="300" src="/images/dwplayground-button.png"><a>
 
 <details>
 <summary>Input</summary>
@@ -53,7 +53,7 @@ payload.message
 xxx
 
 
-<a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=basic%2FextractData"><img width="300" src="/images/dwplayground-button.png"><a>
+<a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=MuleSoft/basic%2FextractData"><img width="300" src="/images/dwplayground-button.png"><a>
 
 <details>
 <summary>Input</summary>
