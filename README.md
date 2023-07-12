@@ -14,6 +14,7 @@ MuleSoft DataWeave bible
 **Xml**
 
 - [Retrieve Element](#retrieveElement)
+- [Index Selector](#indexSelector)
 
 &nbsp;
 
