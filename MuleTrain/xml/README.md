@@ -12,6 +12,11 @@
 
 ### xmlMap
 
+```
+When mapping array elements (JSON or JAVA) to XML, wrap the map function in {( ... )}
+  –{} are defining the object 
+  –() are transforming each element in the array as a key/value pair
+```
 
 <a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=MuleTrain/xml%2FxmlMap"><img width="300" src="/images/dwplayground-button.png"><a>
 
