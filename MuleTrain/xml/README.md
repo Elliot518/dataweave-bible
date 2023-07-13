@@ -81,7 +81,7 @@ flights: {(
 
 >Use .* selector to reference repeated elements
 
-<a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=MuleTrain/xml%2FrepeatElements?20230712120010"><img width="300" src="/images/dwplayground-button.png"><a>
+<a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=MuleTrain/xml%2FrepeatElements?20230712120012"><img width="300" src="/images/dwplayground-button.png"><a>
 
 <details>
 <summary>Input</summary>
