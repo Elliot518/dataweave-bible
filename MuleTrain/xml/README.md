@@ -103,9 +103,9 @@ flights: {(
 
 ```dataweave
 %dw 2.0
-output application/xml
+output application/json
 ---
-payload.user.*user map (item, index) -> {
+payload.users.*user map (item, index) -> {
     fname: item.@firstname,
     lname: item.lastname
 }
