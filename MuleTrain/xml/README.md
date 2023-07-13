@@ -4,7 +4,7 @@
 
 ## Table of Contents
 
-**Transform Arrays**
+**Transform XML Structure**
 - [Xml Mapping](#xmlMap)
 - [Repeat Elements](#repeatElements)
 
