@@ -5,17 +5,15 @@
 ## Table of Contents
 
 **Transform Arrays**
-- [Multi Values Selector](#multiValuesSelector)
+- [Xml Mapping](#xmlMap)
 
 
 &nbsp;
 
-### multiValuesSelector
-
-Select multiple values in an array.
+### xmlMap
 
 
-<a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=MuleTrain/array%2FmultiValuesSelector"><img width="300" src="/images/dwplayground-button.png"><a>
+<a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=MuleTrain/xml%2FxmlMap"><img width="300" src="/images/dwplayground-button.png"><a>
 
 <details>
 <summary>Input</summary>
@@ -53,9 +51,13 @@ Select multiple values in an array.
 
 ```dataweave
 %dw 2.0
-output application/dw
+output application/xml
 ---
-payload.*price
+flights: {(
+    payload map (item, index) -> {
+        'flight$(index)': item
+    }
+)}
 ```
 </details>
 
@@ -68,6 +70,9 @@ payload.*price
 </details>
 
 <hr>
+
+
+
 
 
 
