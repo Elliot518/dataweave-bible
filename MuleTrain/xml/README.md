@@ -6,6 +6,7 @@
 
 **Transform Arrays**
 - [Xml Mapping](#xmlMap)
+- [Repeat Elements](#repeatElements)
 
 
 &nbsp;
@@ -76,6 +77,50 @@ flights: {(
 
 <hr>
 
+### repeatElements
+
+>Use .* selector to reference repeated elements
+
+<a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=MuleTrain/xml%2FrepeatElements"><img width="300" src="/images/dwplayground-button.png"><a>
+
+<details>
+<summary>Input</summary>
+
+```json
+<users>
+  <user firstname="Max">
+    <lastname>Mule</lastname>
+  </user>
+  <user firstname="Molly">
+    <lastname>Jennet</lastname>
+  </user>
+</users>
+```
+</details>
+
+<details>
+<summary>Script</summary>
+
+```dataweave
+%dw 2.0
+output application/xml
+---
+payload.user.*user map (item, index) -> {
+    fname: item.@firstname,
+    lname: item.lastname
+}
+```
+</details>
+
+<details>
+<summary>Output</summary>
+
+```json
+
+```
+</details>
+
+<hr>
 
 
 
