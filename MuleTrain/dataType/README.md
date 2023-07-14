@@ -52,26 +52,16 @@
 
 ```dataweave
 %dw 2.0
-output application/json
-fun myFunc(object) = do {
-    var fname = object.firstname
-    var lname = object.lastname
-    ---
-    {
-        person: do {
-            var user = fname
-            var color = "gray"
-            ---
-            {
-                name: user,
-                color: color
-            }
-        },
-        name: lname
-    }
-}
+output application/dw
+type Currency = String {format: '###.00$'}
 ---
-myFunc(payload)
+flights: payload map (item, index) -> {
+    dest: item.toAirportCode,
+    price: item.price as Currency,
+    totalSeats: item.totalSeats,
+    plane: upper(item.planeType),
+    date: item.departureDate as Date {format: "yyyy/MM/dd"}
+}
 ```
 </details>
 
