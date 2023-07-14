@@ -11,4 +11,7 @@
 
 [3. Define and using variables and functions](function/README.md)
 
+[4. Data Type](dataType/README.md)
+
+
 
