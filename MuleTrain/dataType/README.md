@@ -21,28 +21,28 @@
 
 ```json
 [
-    {
-      "airline": "United",
-      "flightCode": "ER38sd",
-      "fromAirportCode": "LAX",
-      "toAirportCode": "SFO",
-      "departureDate": "05-08-2023",
-      "emptySeats": 0,
-      "totalSeats": 200,
-      "price": 199,
-      "planeType": "Boeing 737"
-    },
-    {
-      "airline": "Delta",
-      "flightCode": "ER0945",
-      "fromAirportCode": "PDX",
-      "toAirportCode": "CLE",
-      "departureDate": "16-06-2023",
-      "emptySeats": 24,
-      "totalSeats": 350,
-      "price": 450,
-      "planeType": "Boeing 747"
-    }
+  {
+    "airline": "United",
+    "flightCode": "ER38sd",
+    "fromAirportCode": "LAX",
+    "toAirportCode": "SFO",
+    "departureDate": "08-05-2023",
+    "emptySeats": 0,
+    "totalSeats": 200,
+    "price": 199,
+    "planeType": "Boeing 737"
+  },
+  {
+    "airline": "Delta",
+    "flightCode": "ER0945",
+    "fromAirportCode": "PDX",
+    "toAirportCode": "CLE",
+    "departureDate": "16-06-2023",
+    "emptySeats": 24,
+    "totalSeats": 350,
+    "price": 450,
+    "planeType": "Boeing 747"
+  }
 ]
 ```
 </details>
