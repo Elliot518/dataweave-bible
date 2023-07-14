@@ -26,7 +26,7 @@
       "flightCode": "ER38sd",
       "fromAirportCode": "LAX",
       "toAirportCode": "SFO",
-      "departureDate": "May 21, 2016",
+      "departureDate": "05-08-2023",
       "emptySeats": 0,
       "totalSeats": 200,
       "price": 199,
@@ -37,7 +37,7 @@
       "flightCode": "ER0945",
       "fromAirportCode": "PDX",
       "toAirportCode": "CLE",
-      "departureDate": "June 1, 2016",
+      "departureDate": "16-06-2023",
       "emptySeats": 24,
       "totalSeats": 350,
       "price": 450,
@@ -52,15 +52,15 @@
 
 ```dataweave
 %dw 2.0
-output application/dw
-type Currency = String {format: '###.00$'}
+output application/json
+type Currency = String {format: '###.00'}
 ---
 flights: payload map (item, index) -> {
     dest: item.toAirportCode,
     price: item.price as Currency,
     totalSeats: item.totalSeats,
     plane: upper(item.planeType),
-    date: item.departureDate as Date {format: "yyyy/MM/dd"}
+    date: item.departureDate as Date {format: 'dd-MM-yyyy'} as String {format: 'yyyy-MM-dd'}
 }
 ```
 </details>
