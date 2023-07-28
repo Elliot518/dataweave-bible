@@ -171,7 +171,8 @@ fun myExternalFunction(data): Array =
     else
         [data]
 ---
-//flatten(myData map ((item, index) -> myExternalFunction(item)))
+//payload map (item, index) -> myExternalFunction(item)
+//flatten(payload map ((item, index) -> myExternalFunction(item)))
 payload flatMap ((item, index) -> myExternalFunction(item))
 ```
 </details>
@@ -182,4 +183,4 @@ payload flatMap ((item, index) -> myExternalFunction(item))
 ```json
 
 ```
-</details>
+</details>  
