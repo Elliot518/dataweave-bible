@@ -5,9 +5,10 @@
 ## Table of Contents
 
 
-**Xml**
+**Map**
 
 - [Map Array Elements](#mapArrayElements)
+- [Map Flatten Array](#mapFlattenArray)
 
 &nbsp;
 
@@ -131,3 +132,54 @@ items: payload.books map (item, index) -> {
 ```
 </details>
 
+<hr>
+
+### mapFlattenArray
+>Map and Flatten an Array.
+
+<a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=MuleSoft/map%2FmapFlattenArray?202307111200"><img width="300" src="/images/dwplayground-button.png"><a>
+
+<details>
+<summary>Input</summary>
+
+```json
+[
+  {
+    "name": 1
+  },
+  {
+    "name": 2
+  },
+  {
+    "name": 3
+  }
+]
+```
+</details>
+
+<details>
+<summary>Script</summary>
+
+```dataweave
+%dw 2.0
+output application/json
+fun myExternalFunction(data): Array =
+    if(data.name == 1)
+        []
+    else if(data.name == 2)
+        [{name: 3}, {name:5}]
+    else
+        [data]
+---
+//flatten(myData map ((item, index) -> myExternalFunction(item)))
+payload flatMap ((item, index) -> myExternalFunction(item))
+```
+</details>
+
+<details>
+<summary>Output</summary>
+
+```json
+
+```
+</details>
