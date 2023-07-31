@@ -295,3 +295,83 @@ payload update {
 </details>
 
 <hr>
+
+### renameKeys
+
+
+<a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=MuleTrain/objects%2FrenameKeys"><img width="300" src="/images/dwplayground-button.png"><a>
+
+<details>
+<summary>Input</summary>
+
+```json
+{
+  "flights":[
+  {
+  "availableSeats":45,
+  "airlineName":"Ryan Air",
+  "aircraftBrand":"Boeing",
+  "aircraftType":"737",
+  "departureDate":"12/14/2017",
+  "origin":"BCN",
+  "destination":"FCO"
+  },
+  {
+  "availableSeats":15,
+  "airlineName":"Ryan Air",
+  "aircraftBrand":"Boeing",
+  "aircraftType":"747",
+  "departureDate":"08/03/2017",
+  "origin":"FCO",
+  "destination":"DFW"
+  }]
+}
+```
+</details>
+
+<details>
+<summary>Script</summary>
+
+```dataweave
+%dw 2.0
+output application/json
+---
+payload.flights map (flight) -> {
+    (flight mapObject (value, key) -> {
+        (emptySeats: value) if (key as String == 'availableSeats'),
+        (airline: value) if (key as String == 'airlineName'),
+        ((key):value) if (key as String !='availableSeats' and key as String != 'airlineName')
+    })
+}
+```
+</details>
+
+<details>
+<summary>Output</summary>
+
+```json
+[
+  {
+    "emptySeats": 45,
+    "airline": "Ryan Air",
+    "aircraftBrand": "Boeing",
+    "aircraftType": "737",
+    "departureDate": "12/14/2017",
+    "origin": "BCN",
+    "destination": "FCO"
+  },
+  {
+    "emptySeats": 15,
+    "airline": "Ryan Air",
+    "aircraftBrand": "Boeing",
+    "aircraftType": "747",
+    "departureDate": "08/03/2017",
+    "origin": "FCO",
+    "destination": "DFW"
+  }
+]
+```
+</details>
+
+<hr>
+
