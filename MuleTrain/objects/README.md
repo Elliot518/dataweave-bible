@@ -234,3 +234,64 @@ payload
 </details>
 
 <hr>
+
+### update
+
+
+<a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=MuleTrain/objects%2Fupdate"><img width="300" src="/images/dwplayground-button.png"><a>
+
+<details>
+<summary>Input</summary>
+
+```json
+{
+  "username": "WASP",
+  "name": "Lisbeth",
+  "surname": "Salander",
+  "location": {
+      "address": {
+          "street": "Lundagatan",
+          "number": 9
+      },
+      "city": "Stockholm",
+      "country": "Sweden"
+  }
+}
+```
+</details>
+
+<details>
+<summary>Script</summary>
+
+```dataweave
+%dw 2.0
+output json
+---
+payload update {
+  case uname at .username -> lower(uname)
+  case .location.address.street -> "Fiskargatan"
+}
+```
+</details>
+
+<details>
+<summary>Output</summary>
+
+```json
+{
+  "username": "wasp",
+  "name": "Lisbeth",
+  "surname": "Salander",
+  "location": {
+    "address": {
+      "street": "Fiskargatan",
+      "number": 9
+    },
+    "city": "Stockholm",
+    "country": "Sweden"
+  }
+}
+```
+</details>
+
+<hr>
