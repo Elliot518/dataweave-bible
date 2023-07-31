@@ -110,4 +110,127 @@ payload map (item,index) -> (
 
 <hr>
 
+### pluck
 
+pluck takes as inputs an Object, and a lambda that accepts 3 parameters: a value, key, and number representing an index. 
+This lambda can return any type. Whatever type the lambda returns is the same type for each item in the output Array.
+
+Here’s an example of using pluck to take in an Object, and create an Array where each element is a single key-value pair from the input object:
+Input:
+{
+  "firstName": "Avery",
+  "lastName": "Chance",
+  "age": 56,
+  "occupation": "Physicist"
+}
+
+DW Script
+%dw 2.0
+output json
+---
+payload pluck (v,k,idx) -> {(k): v}
+
+Output:
+[
+  {"firstName": "Avery"},
+  {"lastName": "Chance"},
+  {"age": 56},
+  {"occupation": "Physicist"}
+]
+
+The pluck function is commonly used in conjunction with groupBy. This is because often times groupBy does exactly what the user wants in terms of grouping data, but the keys labelling the groups are not needed, and the user would rather have an Array of Arrays instead of an Object of Arrays.
+
+<a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=MuleTrain/objects%2Fpluck"><img width="300" src="/images/dwplayground-button.png"><a>
+
+<details>
+<summary>Input</summary>
+
+```json
+[
+  {
+    "orderId"  : 1,
+    "customer" : "Josh",
+    "lineId"   : 1,
+    "lineItem" : "Shoes",
+    "price"    : 50
+  },
+  {
+    "orderId"  : 1,
+    "customer" : "Josh",
+    "lineId"   : 2,
+    "lineItem" : "Socks",
+    "price"    : 20
+  },
+  {
+    "orderId"  : 2,
+    "customer" : "Mariano",
+    "lineId"   : 3,
+    "lineItem" : "Shirt",
+    "price"    : 30
+  },
+  {
+    "orderId"  : 2,
+    "customer" : "Mariano",
+    "lineId"   : 4,
+    "lineItem" : "Jacket",
+    "price"    : 80
+  }
+]
+```
+</details>
+
+<details>
+<summary>Script</summary>
+
+```dataweave
+%dw 2.0
+output json
+---
+payload
+    groupBy ((order, index) -> order.orderId)
+    pluck ((order, id, index) -> order)
+```
+</details>
+
+<details>
+<summary>Output</summary>
+
+```json
+[
+  [
+    {
+      "orderId": 1,
+      "customer": "Josh",
+      "lineId": 1,
+      "lineItem": "Shoes",
+      "price": 50
+    },
+    {
+      "orderId": 1,
+      "customer": "Josh",
+      "lineId": 2,
+      "lineItem": "Socks",
+      "price": 20
+    }
+  ],
+  [
+    {
+      "orderId": 2,
+      "customer": "Mariano",
+      "lineId": 3,
+      "lineItem": "Shirt",
+      "price": 30
+    },
+    {
+      "orderId": 2,
+      "customer": "Mariano",
+      "lineId": 4,
+      "lineItem": "Jacket",
+      "price": 80
+    }
+  ]
+]
+```
+</details>
+
+<hr>
