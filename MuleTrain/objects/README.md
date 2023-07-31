@@ -114,7 +114,7 @@ payload map (item,index) -> (
 
 pluck takes as inputs an Object, and a lambda that accepts 3 parameters: a value, key, and number representing an index. 
 This lambda can return any type. Whatever type the lambda returns is the same type for each item in the output Array.
-
+```
 Here’s an example of using pluck to take in an Object, and create an Array where each element is a single key-value pair from the input object:
 Input:
 {
@@ -137,7 +137,7 @@ Output:
   {"age": 56},
   {"occupation": "Physicist"}
 ]
-
+```
 The pluck function is commonly used in conjunction with groupBy. This is because often times groupBy does exactly what the user wants in terms of grouping data, but the keys labelling the groups are not needed, and the user would rather have an Array of Arrays instead of an Object of Arrays.
 
 <a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=MuleTrain/objects%2Fpluck"><img width="300" src="/images/dwplayground-button.png"><a>
