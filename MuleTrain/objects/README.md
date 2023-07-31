@@ -54,6 +54,51 @@ payload filterObject (value, key, index) -> (not (key as String contains "secret
 
 <hr>
 
+### mapObject
 
+mapObject transforms an Object to an new Object instead of an Array to a new Array. 
+
+<a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=MuleTrain/objects%2FmapObject"><img width="300" src="/images/dwplayground-button.png"><a>
+
+<details>
+<summary>Input</summary>
+
+```json
+[
+  {"First Name": "Max", "Last Name": "The Mule"},
+  {"First Name": "Albert", "Last Name": "Einstein"}
+]
+```
+</details>
+
+<details>
+<summary>Script</summary>
+
+```dataweave
+%dw 2.0
+output json
+---
+payload map (item,index) -> (
+	item mapObject (value, key, index) -> {
+        (lower(key)): upper(value)
+    }
+)
+// payload map (items,index) -> (
+// 	items mapObject (
+// 		(lower($$)):(upper($))
+// 	)
+// )
+```
+</details>
+
+<details>
+<summary>Output</summary>
+
+```json
+
+```
+</details>
+
+<hr>
 
 
