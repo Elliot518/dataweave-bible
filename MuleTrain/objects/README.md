@@ -95,7 +95,16 @@ payload map (item,index) -> (
 <summary>Output</summary>
 
 ```json
-
+[
+  {
+    "first name": "MAX",
+    "last name": "THE MULE"
+  },
+  {
+    "first name": "ALBERT",
+    "last name": "EINSTEIN"
+  }
+]
 ```
 </details>
 
