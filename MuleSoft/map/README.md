@@ -188,7 +188,9 @@ payload flatMap ((item, index) -> myExternalFunction(item))
 <hr>
 
 ### mapObjectsKey
->Map and Flatten an Array.
+>Use regular expression to match a key.
+>
+>注: 正则表达式返回的是一个数组，第一个元素是整体匹配结果，然后是各个分组（括号里）匹配的内容。
 
 <a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=MuleSoft/map%2FmapObjectsKey?202307111200"><img width="300" src="/images/dwplayground-button.png"><a>
 
