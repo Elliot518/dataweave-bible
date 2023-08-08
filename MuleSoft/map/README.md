@@ -184,3 +184,72 @@ payload flatMap ((item, index) -> myExternalFunction(item))
 
 ```
 </details>  
+
+<hr>
+
+### mapObjectsKey
+>Map and Flatten an Array.
+
+<a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=MuleSoft/map%2FmapObjectsKey?202307111200"><img width="300" src="/images/dwplayground-button.png"><a>
+
+<details>
+<summary>Input</summary>
+
+```json
+{
+	"(sheet)1": [{
+		"Id": 1.0,
+		"Team": "Mule",
+		"timestamp": "2019-09-26T16:37:54",
+		"Access": 12431
+	}],
+	"(sheet)2": [{
+			"Id": 2.0,
+			"Team": "Max",
+			"timestamp": "2019-09-26T16:37:54",
+			"Access": 81243
+		},
+		{
+			"Id": 2.0,
+			"Team": "Max Mule",
+			"timestamp": "2019-09-26T18:00:54",
+			"Access": 67676
+		}
+	]
+}
+```
+</details>
+
+<details>
+<summary>Script</summary>
+
+```dataweave
+%dw 2.0
+output application/json
+
+var append =
+    {
+    "Id": "2",
+    "Access": "4444",
+    "Subteam": "1",
+    }
+
+fun extractNumber(pageName: Key) =
+     (pageName as String match  /\(sheet\)([0-9]+)/)[1]
+---
+payload mapObject ((value, key, index) -> do {
+        if(extractNumber(key) == append.Id)
+            {(key): value << append}
+         else
+            {(key): value}
+})
+```
+</details>
+
+<details>
+<summary>Output</summary>
+
+```json
+
+```
+</details>  
