@@ -4,14 +4,16 @@
 
 ## Table of Contents
 
-**Basic**
+**Join**
 - [Join](#join)
 
 &nbsp;
 
 ### join
 
-Hello World of DataWeave
+
+Joins two arrays of objects by a given ID criteria.
+(inner join)
 
 
 <a href="https://dataweave.mulesoft.com/learn/playground?projectMethod=GHRepo&repo=Elliot518%2Fdataweave-bible&path=MuleSoft/join%2Fjoin"><img width="300" src="/images/dwplayground-button.png"><a>
@@ -41,7 +43,38 @@ join(users, products, (user) -> user.id, (product) -> product.ownerId)
 <summary>Output</summary>
 
 ```json
-
+[
+  {
+    "l": {
+      "id": "1",
+      "name": "Mariano"
+    },
+    "r": {
+      "ownerId": "1",
+      "name": "DataWeave"
+    }
+  },
+  {
+    "l": {
+      "id": "1",
+      "name": "Mariano"
+    },
+    "r": {
+      "ownerId": "1",
+      "name": "BAT"
+    }
+  },
+  {
+    "l": {
+      "id": "3",
+      "name": "Julian"
+    },
+    "r": {
+      "ownerId": "3",
+      "name": "DataSense"
+    }
+  }
+]
 ```
 </details>
 

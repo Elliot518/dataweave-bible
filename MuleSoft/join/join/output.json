@@ -1,0 +1,32 @@
+[
+  {
+    "l": {
+      "id": "1",
+      "name": "Mariano"
+    },
+    "r": {
+      "ownerId": "1",
+      "name": "DataWeave"
+    }
+  },
+  {
+    "l": {
+      "id": "1",
+      "name": "Mariano"
+    },
+    "r": {
+      "ownerId": "1",
+      "name": "BAT"
+    }
+  },
+  {
+    "l": {
+      "id": "3",
+      "name": "Julian"
+    },
+    "r": {
+      "ownerId": "3",
+      "name": "DataSense"
+    }
+  }
+]
